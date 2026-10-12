@@ -2,17 +2,11 @@ document.documentElement.classList.add("js");
 
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-// Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Nav: scrolled state, progress bar, mobile menu
+// Nav: scrolled state, mobile menu
 const nav = document.querySelector(".nav");
-const progress = document.querySelector(".scroll-progress");
 const toggle = document.querySelector(".nav__toggle");
 
 function onScroll() {
-  const max = document.documentElement.scrollHeight - window.innerHeight;
-  progress.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
   nav.classList.toggle("is-scrolled", window.scrollY > 8);
 }
 window.addEventListener("scroll", onScroll, { passive: true });
@@ -28,21 +22,6 @@ document.querySelectorAll(".nav__mobile a").forEach((a) =>
     toggle.setAttribute("aria-expanded", "false");
   })
 );
-
-// Reveal on scroll (staggered within each group)
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const siblings = [...entry.target.parentElement.children].filter((el) => el.classList.contains("reveal"));
-      entry.target.style.transitionDelay = `${Math.min(siblings.indexOf(entry.target), 4) * 80}ms`;
-      entry.target.classList.add("is-visible");
-      revealObserver.unobserve(entry.target);
-    });
-  },
-  { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
-);
-document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
 
 // Highlight the nav link for the section in view
 const links = document.querySelectorAll(".nav__links a");
@@ -145,41 +124,3 @@ document.querySelectorAll("[data-case-open]").forEach((card) => {
   // A link ending in #case-cloud-cost opens the case study directly
   if (location.hash === `#${dialog.id}`) dialog.showModal();
 });
-
-// About: hold the section in place on larger screens and light each paragraph in turn.
-// Phones and short windows skip the hold and light paragraphs as they come into view.
-const about = document.querySelector("[data-about-scroll]");
-if (about && !reduceMotion) {
-  const stage = about.querySelector(".about-scroll__stage");
-  const text = about.querySelector(".about__text");
-  const paras = [...text.querySelectorAll("p")];
-  about.classList.add("is-stepped");
-
-  const fits = () => {
-    about.classList.remove("is-pinned");
-    const ok = window.innerWidth > 760 && stage.offsetHeight + 160 < window.innerHeight;
-    about.classList.toggle("is-pinned", ok);
-  };
-
-  const update = () => {
-    let lit;
-    if (about.classList.contains("is-pinned")) {
-      const range = about.offsetHeight - window.innerHeight;
-      const progress = Math.min(Math.max((window.scrollY - about.offsetTop) / range, 0), 1);
-      lit = Math.min(paras.length, 1 + Math.floor(progress * paras.length * 1.15));
-      text.style.setProperty("--about-progress", progress);
-    } else {
-      lit = paras.filter((p) => p.getBoundingClientRect().top < window.innerHeight * 0.75).length;
-      text.style.setProperty("--about-progress", lit / paras.length);
-    }
-    paras.forEach((p, i) => p.classList.toggle("is-lit", i < lit));
-  };
-
-  fits();
-  update();
-  window.addEventListener("scroll", update, { passive: true });
-  window.addEventListener("resize", () => {
-    fits();
-    update();
-  });
-}

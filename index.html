@@ -15,10 +15,9 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%236366f1'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-weight='700' font-size='28' fill='white'>HE</text></svg>" />
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"></div>
 
   <!-- ============ NAV ============ -->
-  <header class="nav" id="top">
+  <header class="nav">
     <div class="container nav__inner">
       <a href="#top" class="nav__logo" aria-label="Home">
         <span class="nav__mark">HE</span>
@@ -53,14 +52,14 @@
       <div class="hero__glow" aria-hidden="true"></div>
       <div class="container hero__grid">
         <div class="hero__copy">
-          <h1 class="hero__title reveal">
+          <h1 class="hero__title">
             Data Analyst<br /><span class="gradient-text">who drives decisions.</span>
           </h1>
-          <p class="hero__lead reveal">
+          <p class="hero__lead">
             My work spans the full data stack, building the pipelines and financial models behind the analysis
             product, growth and revenue teams act on.
           </p>
-          <ul class="hero__tags reveal" aria-label="Experience and focus areas">
+          <ul class="hero__tags" aria-label="Experience and focus areas">
             <li class="hero__tag">4+ years</li>
             <li class="hero__tag">Analytics</li>
             <li class="hero__tag">Data Engineering</li>
@@ -70,46 +69,43 @@
 
 
         <!-- Notebook card: cells "run" one by one when scrolled into view (see script.js) -->
-        <div class="notebook reveal" data-notebook role="region" aria-label="How I work">
+        <div class="notebook" data-notebook role="region" aria-label="How I work">
           <ol class="cells">
-            <li class="cell" style="--c:#60a5fa"><span class="cell__gutter" aria-hidden="true">[1]</span><div class="cell__body"><h3>question</h3><p>Understand the problem before touching the data.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
-            <li class="cell" style="--c:#c084fc"><span class="cell__gutter" aria-hidden="true">[2]</span><div class="cell__body"><h3>data</h3><p>Pull, clean and sanity&#8209;check the data.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
-            <li class="cell" style="--c:#a3e635"><span class="cell__gutter" aria-hidden="true">[3]</span><div class="cell__body"><h3>insight</h3><p>Find patterns and explain why they happen.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
-            <li class="cell" style="--c:#fb7185"><span class="cell__gutter" aria-hidden="true">[4]</span><div class="cell__body"><h3>decision</h3><p>Share what to do next, then check it worked.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
+            <li class="cell" style="--c:#60a5fa"><span class="cell__gutter" aria-hidden="true">[1]</span><div class="cell__body"><h3>Question</h3><p>Understand the problem before touching the data.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
+            <li class="cell" style="--c:#c084fc"><span class="cell__gutter" aria-hidden="true">[2]</span><div class="cell__body"><h3>Data</h3><p>Pull, clean and sanity&#8209;check the data.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
+            <li class="cell" style="--c:#a3e635"><span class="cell__gutter" aria-hidden="true">[3]</span><div class="cell__body"><h3>Insight</h3><p>Find patterns and explain why they happen.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
+            <li class="cell" style="--c:#fb7185"><span class="cell__gutter" aria-hidden="true">[4]</span><div class="cell__body"><h3>Decision</h3><p>Share what to do next, then check it worked.</p></div><span class="cell__check" aria-hidden="true">✓</span></li>
           </ol>
         </div>
       </div>
     </section>
 
     <!-- ============ ABOUT ============ -->
-    <!-- About holds in place on scroll while each paragraph lights up in turn (see script.js) -->
-    <section class="section section--compact about-scroll" id="about" data-about-scroll>
-      <div class="about-scroll__stage">
+    <section class="section" id="about">
       <div class="container">
-        <h2 class="about__title reveal"><span class="gradient-text">About</span></h2>
+        <h2 class="about__title"><span class="gradient-text">About</span></h2>
         <div class="about">
-          <div class="about__text reveal">
+          <div class="about__text">
             <p>I studied Software Engineering at NED University of Engineering &amp; Technology and graduated third in my batch with a 3.88 CGPA. At university, the projects I liked most were the ones with data in them, so moving into analytics after graduating felt natural. I’m most at home working between the business and the tech.</p>
             <p>AI has changed my day-to-day more than any tool before it. I use it to write code, explore data and get through routine tasks, so I can take on a much wider range of projects and keep my own time for the parts that need real thought. Usually those start with messy data and a question nobody has answered yet, which is exactly what I enjoy.</p>
             <p>I value people who care about the details and are willing to change their mind when the data says to.</p>
           </div>
-          <div class="about__photo reveal">
+          <div class="about__photo">
             <img src="assets/hanifa.jpg" alt="Illustrated portrait of Hanifa Elahi" width="220" height="220" />
           </div>
         </div>
-      </div>
       </div>
     </section>
 
     <!-- ============ EXPERIENCE ============ -->
     <section class="section" id="experience">
       <div class="container">
-        <header class="section__head section__head--compact reveal">
+        <header class="section__head section__head--compact">
           <h2><span class="gradient-text">Experience</span></h2>
         </header>
 
         <ol class="timeline">
-          <li class="timeline__item reveal">
+          <li class="timeline__item">
             <details class="job" open>
               <summary class="job__head">
                 <div>
@@ -129,7 +125,7 @@
               </ul>
             </details>
           </li>
-          <li class="timeline__item reveal">
+          <li class="timeline__item">
             <details class="job">
               <summary class="job__head">
                 <div>
@@ -149,7 +145,7 @@
               </ul>
             </details>
           </li>
-          <li class="timeline__item reveal">
+          <li class="timeline__item">
             <details class="job">
               <summary class="job__head">
                 <div>
@@ -167,7 +163,7 @@
               </ul>
             </details>
           </li>
-          <li class="timeline__item reveal">
+          <li class="timeline__item">
             <details class="job">
               <summary class="job__head">
                 <div>
@@ -191,12 +187,12 @@
     <!-- ============ WORK ============ -->
     <section class="section" id="work">
       <div class="container">
-        <header class="section__head section__head--compact reveal">
+        <header class="section__head section__head--compact">
           <h2>Problems I’ve <span class="gradient-text">worked through</span></h2>
         </header>
 
         <div class="cases">
-          <a class="case reveal" href="https://github.com/HanifaElahi/cloud-cost-forecasting" target="_blank" rel="noopener" data-case-open="case-cloud-cost">
+          <a class="case" href="https://github.com/HanifaElahi/cloud-cost-forecasting" target="_blank" rel="noopener" data-case-open="case-cloud-cost">
             <div class="case__media">
               <img src="assets/cloud-cost-steps.jpg" alt="Chart: monthly cloud bill stays flat, then rises in steps as the user base grows" loading="lazy" />
             </div>
@@ -214,11 +210,11 @@
     <!-- ============ SKILLS ============ -->
     <section class="section" id="skills">
       <div class="container">
-        <header class="section__head section__head--compact reveal">
+        <header class="section__head section__head--compact">
           <h2>Skills &amp; <span class="gradient-text">stack</span></h2>
         </header>
         <div class="toolkit">
-          <div class="toolkit__cat reveal">
+          <div class="toolkit__cat">
             <h3>Product &amp; Growth Analytics</h3>
             <ul>
               <li>Retention &amp; cohort analysis</li>
@@ -229,7 +225,7 @@
               <li>Attribution</li>
             </ul>
           </div>
-          <div class="toolkit__cat reveal">
+          <div class="toolkit__cat">
             <h3>Financial Modeling</h3>
             <ul>
               <li>Financial models</li>
@@ -238,7 +234,7 @@
               <li>Board &amp; investor reporting</li>
             </ul>
           </div>
-          <div class="toolkit__cat reveal">
+          <div class="toolkit__cat">
             <h3>Data Engineering</h3>
             <ul>
               <li>Data modeling</li>
@@ -247,7 +243,7 @@
               <li>SQL optimisation</li>
             </ul>
           </div>
-          <div class="toolkit__cat reveal">
+          <div class="toolkit__cat">
             <h3>AI in Analytics</h3>
             <ul>
               <li>LLMs in data pipelines</li>
@@ -257,7 +253,7 @@
             </ul>
           </div>
           <!-- Stack: spans two columns, grouped by category -->
-          <div class="toolkit__cat toolkit__cat--wide reveal">
+          <div class="toolkit__cat toolkit__cat--wide">
             <h3>Stack</h3>
             <div class="tools">
               <div class="tools__row"><span class="tools__label">Languages &amp; databases</span><div class="tags-box"><span>Python</span><span>SQL</span><span>BigQuery</span><span>Trino</span><span>PostgreSQL</span><span>MySQL</span></div></div>
@@ -273,7 +269,7 @@
     <!-- ============ CONTACT ============ -->
     <section class="section contact" id="contact">
       <div class="container">
-        <div class="contact__box reveal">
+        <div class="contact__box">
           <span class="label">LET'S CONNECT</span>
           <h2>Looking for a data analyst<br class="br-wide" /> who drives decisions?</h2>
           <p>I’m based in Karachi, Pakistan <span class="tz">(UTC+5)</span>. Feel free to reach out about data roles, collaborations or an analytics problem you’re working on.</p>
@@ -404,7 +400,6 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <span>© <span id="year"></span> Hanifa Elahi</span>
       <a href="#top">Back to top ↑</a>
     </div>
   </footer>
