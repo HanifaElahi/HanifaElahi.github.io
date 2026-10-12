@@ -8,7 +8,7 @@
   --border-2: rgba(255, 255, 255, 0.14);
   --text: #e8ebf2;
   --muted: #9aa3b5;
-  --faint: #6b7385;
+  --faint: #808899;
   --accent: #6366f1;
   --accent-2: #22d3ee;
   --accent-soft: rgba(99, 102, 241, 0.14);
@@ -134,7 +134,7 @@ ul, ol { margin: 0; padding: 0; }
 
 /* Notebook card around the cells */
 .notebook {
-  padding: 18px; border-radius: 22px; border: 1px solid rgba(255,255,255,.12);
+  padding: 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,.12);
   background:
     radial-gradient(120% 90% at 85% 0%, rgba(129,140,248,.18), transparent 55%),
     linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
@@ -142,7 +142,7 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 /* Steps styled as notebook cells: [n] gutter, coloured edge, mono step name */
-.cells { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.cells { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .cell {
   display: grid; grid-template-columns: 52px 1fr; border-radius: 12px; overflow: hidden;
   border: 1px solid var(--border-2); background: rgba(8,11,18,.55);
@@ -162,9 +162,9 @@ ul, ol { margin: 0; padding: 0; }
 .cell.is-done { opacity: 1; }
 .cell.is-done .cell__check { opacity: 1; transform: translateY(-50%) scale(1); }
 @keyframes blink { 50% { opacity: .3; } }
-.cell__gutter { font: 500 12px/1 var(--mono); color: var(--c); padding: 18px 0 0 14px; border-right: 1px solid var(--border); background: rgba(255,255,255,.02); }
-.cell__body { padding: 14px 18px 16px; border-left: 3px solid var(--c); }
-.cell__body h3 { font: 600 15px/1.2 var(--mono); margin-bottom: 6px; }
+.cell__gutter { font: 500 12px/1 var(--mono); color: var(--c); padding: 13px 0 0 14px; border-right: 1px solid var(--border); background: rgba(255,255,255,.02); }
+.cell__body { padding: 10px 16px 11px; border-left: 3px solid var(--c); }
+.cell__body h3 { font: 600 15px/1.2 var(--mono); margin-bottom: 3px; }
 .cell__body p { color: var(--muted); font-size: 14.5px; line-height: 1.5; text-wrap: pretty; }
 
 
@@ -198,6 +198,37 @@ ul, ol { margin: 0; padding: 0; }
 .case__tags span { font: 400 12px/1.3 var(--mono); padding: 5px 9px; border-radius: 6px; background: rgba(255,255,255,.04); border: 1px solid var(--border); color: var(--muted); }
 .case__link { margin-top: auto; padding-top: 6px; font-weight: 600; font-size: 14px; color: #93c5fd; }
 .case:hover .case__link { color: #fff; }
+/* ===== Writing ===== */
+.posts { list-style: none; border-top: 1px solid var(--border); max-width: 1000px; }
+.posts li { border-bottom: 1px solid var(--border); }
+.post { display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; gap: 24px; align-items: baseline; padding: 20px 12px; margin: 0 -12px; border-radius: 10px; transition: background .2s; }
+.post:hover { background: rgba(255,255,255,.03); }
+.post__cat { font: 500 12px/1.4 var(--mono); color: #67e8f9; letter-spacing: .02em; }
+.post__text { display: flex; flex-direction: column; gap: 4px; }
+.post__title { font-size: 17px; font-weight: 600; color: var(--text); transition: color .2s; }
+.post:hover .post__title { color: #93c5fd; }
+.post__desc { font-size: 14.5px; color: var(--muted); line-height: 1.55; }
+.post__date { font: 400 13px/1.4 var(--mono); color: var(--faint); white-space: nowrap; }
+
+/* Articles shown as a grid of small cards (drop posts--cards in the HTML to go back to rows) */
+.posts--cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; border-top: 0; }
+.posts--cards li { border-bottom: 0; }
+.posts--cards .post {
+  height: 100%; margin: 0; padding: 20px 22px; gap: 8px 16px; grid-template-columns: 1fr auto; align-content: start;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px; transition: transform .25s, border-color .25s;
+}
+.posts--cards .post:hover { background: var(--surface); transform: translateY(-3px); border-color: rgba(96,165,250,.45); }
+.posts--cards .post__text { grid-column: 1 / -1; grid-row: 2; }
+
+/* While there's only one case study, lay it out wide: chart left, text right */
+.case:only-child { grid-column: 1 / -1; flex-direction: row; max-width: 1000px; }
+.case:only-child .case__media { flex: 0 0 48%; border-bottom: 0; border-right: 1px solid var(--border); }
+.case:only-child .case__media { display: flex; align-items: center; background: #fff; aspect-ratio: auto; }
+.case:only-child .case__media img { height: auto; object-fit: contain; }
+.case:only-child .case__body { justify-content: center; gap: 12px; padding: 28px 32px; }
+.case:only-child .case__body h3 { font-size: 22px; }
+.case:only-child .case__body p { font-size: 15.5px; max-width: 46ch; }
+.case:only-child .case__link { margin-top: 6px; }
 
 /* Timeline */
 .timeline { list-style: none; position: relative; padding-left: 32px; }
@@ -225,7 +256,6 @@ ul, ol { margin: 0; padding: 0; }
 .job[open]::details-content { block-size: auto; }
 .job h3 { font-size: 19px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .badge { font: 500 12px/1 var(--font); padding: 6px 10px; border-radius: 6px; background: var(--accent-soft); color: #c7d2fe; letter-spacing: 0; }
-.job__meta { color: var(--faint); font-size: 14px; margin-top: 4px; }
 .job__date { font-size: 13px; color: var(--muted); }
 .job ul { padding-left: 18px; color: var(--muted); font-size: 15px; max-width: 90ch; }
 .job li { margin: 6px 0; }
@@ -372,6 +402,12 @@ body:has(.cs[open]) { overflow: hidden; }
   .about__photo img { width: 120px; height: 120px; }
   .br-wide { display: none; }
   .nav__mobile { padding: 8px 16px 20px; }
+  .post { grid-template-columns: 1fr auto; gap: 6px 16px; padding: 18px 0; margin: 0; }
+  .post__text { grid-column: 1 / -1; grid-row: 2; }
+  .posts--cards { grid-template-columns: 1fr; }
+  .case:only-child { flex-direction: column; }
+  .case:only-child .case__media { flex: none; border-right: 0; border-bottom: 1px solid var(--border); }
+  .case:only-child .case__body { padding: 18px 20px 20px; }
   .cs { width: 100%; height: 100dvh; border-radius: 0; border: 0; }
   .cs__head { padding: 22px 16px 18px; }
   .cs__scroll { display: block; padding: 0 16px 32px; }
