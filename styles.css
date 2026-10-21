@@ -182,15 +182,15 @@ ul, ol { margin: 0; padding: 0; }
 .section__sub { color: var(--muted); margin-top: 14px; font-size: 17px; }
 
 /* Case studies: compact cards in a grid */
-.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; }
+.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .case {
   display: flex; flex-direction: column; border-radius: 16px; overflow: hidden;
   background: var(--surface); border: 1px solid var(--border);
   transition: transform .25s, border-color .25s;
 }
 .case:hover { transform: translateY(-4px); border-color: rgba(96,165,250,.45); }
-.case__media { aspect-ratio: 16 / 9; background: #f7f9fd; border-bottom: 1px solid var(--border); overflow: hidden; }
-.case__media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.case__media { aspect-ratio: 2 / 1; background: #fff; border-bottom: 1px solid var(--border); overflow: hidden; }
+.case__media img { width: 100%; height: 100%; object-fit: contain; }
 .case__body { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 20px; flex: 1; }
 .case__body h3 { font-size: 18px; }
 .case__body p { color: var(--muted); font-size: 14.5px; line-height: 1.55; }
@@ -199,7 +199,7 @@ ul, ol { margin: 0; padding: 0; }
 .case__link { margin-top: auto; padding-top: 6px; font-weight: 600; font-size: 14px; color: #93c5fd; }
 .case:hover .case__link { color: #fff; }
 /* ===== Writing ===== */
-.posts { list-style: none; border-top: 1px solid var(--border); max-width: 1000px; }
+.posts { list-style: none; border-top: 1px solid var(--border); }
 .posts li { border-bottom: 1px solid var(--border); }
 .post { display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; gap: 24px; align-items: baseline; padding: 20px 12px; margin: 0 -12px; border-radius: 10px; transition: background .2s; }
 .post:hover { background: rgba(255,255,255,.03); }
@@ -221,7 +221,7 @@ ul, ol { margin: 0; padding: 0; }
 .posts--cards .post__text { grid-column: 1 / -1; grid-row: 2; }
 
 /* While there's only one case study, lay it out wide: chart left, text right */
-.case:only-child { grid-column: 1 / -1; flex-direction: row; max-width: 1000px; }
+.case:only-child { grid-column: 1 / -1; flex-direction: row; }
 .case:only-child .case__media { flex: 0 0 48%; border-bottom: 0; border-right: 1px solid var(--border); }
 .case:only-child .case__media { display: flex; align-items: center; background: #fff; aspect-ratio: auto; }
 .case:only-child .case__media img { height: auto; object-fit: contain; }
