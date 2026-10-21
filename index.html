@@ -145,7 +145,7 @@
               <ul>
                 <li>Built the financial model for the company’s acquisition by Pakistan’s largest telecom operator, covering 8 product lines and projecting 4.7× lead growth and 10× revenue growth by FY29.</li>
                 <li>Developed the operating model linking marketing spend, leads, sales, revenue and contribution margin across 5 product lines; informed decisions that lifted test-prep margin from 11% to 70% and cut lead costs by ~40%.</li>
-                <li>Built an automated lead classifier with Claude Code that tagged 28K+ chat leads by intent, contributing to a rise in conversion from 1% to 4% over four months.</li>
+                <li>Built a rule-based lead classifier with Claude Code that sorted 28K+ chat leads by intent, contributing to a rise in conversion from 1% to 4% over four months.</li>
                 <li>Analysed 26.7K leads and found a segment converting nearly 4× more often; worked with marketing to restructure campaigns and shift spend toward it.</li>
                 <li>Designed a lead-scoring model from mobile and web behaviour, validated on 10K users, that filters out 60–70% of low-intent leads and builds a warm lead pool for peak season.</li>
                 <li>Set up and owned app install attribution with the mobile and backend teams, contributing to a 6% lift in conversion.</li>
@@ -216,6 +216,17 @@
         </header>
 
         <div class="cases">
+          <a class="case" href="https://github.com/HanifaElahi/leads-tagging-framework" target="_blank" rel="noopener" data-case-open="case-lead-tagging">
+            <div class="case__media">
+              <img src="assets/leads-vs-sales.jpg" alt="Bar chart: high-intent leads were 27% of qualified leads but brought 61% of sales" loading="lazy" />
+            </div>
+            <div class="case__body">
+              <h3>Lead Classification from Sales Chats</h3>
+              <p>Hundreds of sales chats a day and no quick way to spot serious buyers. I built rules that sort each chat by buying intent, so agents call the right students first.</p>
+              <div class="case__tags"><span>Lead scoring</span><span>Rule-based classification</span><span>Production</span></div>
+              <span class="case__link">Read case study →</span>
+            </div>
+          </a>
           <a class="case" href="https://github.com/HanifaElahi/cloud-cost-forecasting" target="_blank" rel="noopener" data-case-open="case-cloud-cost">
             <div class="case__media">
               <img src="assets/cloud-cost-steps.jpg" alt="Chart: monthly cloud bill stays flat, then rises in steps as the user base grows" loading="lazy" />
@@ -361,7 +372,7 @@
     </section>
   </main>
 
-  <!-- Case study pop-up: opened from the card in #work (see script.js) -->
+  <!-- Case study pop-ups: each opened from its card in #work (see script.js) -->
   <dialog class="cs" id="case-cloud-cost" aria-labelledby="cs-cloud-title">
     <header class="cs__head">
       <div>
@@ -469,6 +480,132 @@
           <p>Both assumptions are inputs, so they can be changed without rebuilding the model.</p>
           <p class="cs__note">The dataset is synthetic and was made for this case study. The numbers are invented; only the shape of the cost behaviour is meant to be realistic.</p>
           <a class="btn btn--grad cs__github" href="https://github.com/HanifaElahi/cloud-cost-forecasting" target="_blank" rel="noopener">Full write-up on GitHub ↗</a>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="cs" id="case-lead-tagging" aria-labelledby="cs-lead-title">
+    <header class="cs__head">
+      <div>
+        <h2 id="cs-lead-title">Lead Classification from Sales Chats</h2>
+        <p>Sorting hundreds of sales chats a day by buying intent, so agents call the students most likely to buy first.</p>
+        <div class="case__tags"><span>Lead scoring</span><span>Rule-based classification</span><span>Production</span></div>
+      </div>
+      <button class="cs__close" type="button" aria-label="Close case study" data-case-close>✕</button>
+    </header>
+
+    <div class="cs__scroll">
+      <nav class="cs__nav" aria-label="Case study sections">
+        <a href="#ld-summary">Summary</a>
+        <a href="#ld-problem">The problem</a>
+        <a href="#ld-hard">Why it was hard</a>
+        <a href="#ld-tags">What each chat gets</a>
+        <a href="#ld-rules">Why rules, not AI</a>
+        <a href="#ld-how">How it works</a>
+        <a href="#ld-results">Results</a>
+        <a href="#ld-next">What I’d check next</a>
+      </nav>
+
+      <div class="cs__content">
+        <section id="ld-summary">
+          <h3>Summary</h3>
+          <p>Leads from every ad and channel landed in one chat inbox, and agents had no quick way to tell who was serious. I built a rule-based classifier that tags every chat by buying intent and refreshes the call list several times a day, so the students most likely to buy are reached first.</p>
+          <ul>
+            <li>28K+ chats tagged over five months</li>
+            <li>High-intent leads were about a quarter of qualified leads and brought around 60% of their sales</li>
+            <li>Fewer than 0.1% of chats tagged irrelevant ever led to a sale</li>
+            <li>Conversion on the main course rose from 1% to 4% in four months</li>
+          </ul>
+          <p class="cs__note">Built with Python, Claude Code, the Chatwoot API and Google Sheets.</p>
+        </section>
+
+        <section id="ld-problem">
+          <h3>The problem</h3>
+          <p>Many leads came from ads that open a chat with a message already typed out. The student sends it, a bot asks a few questions, and then a sales agent takes over.</p>
+          <p>Some students never wrote again. Some were years away from the exam, wanted a course the business didn’t offer, or were looking for a job. A few were asking about fees, start dates and how to pay, and those were the ones agents needed to reach.</p>
+          <p>Before this, anyone who replied counted as qualified, so “ok” counted the same as “how do I pay?”. Agents opened chats one by one, and students who were ready to buy waited behind chats that were never going to sell.</p>
+        </section>
+
+        <section id="ld-hard">
+          <h3>Why it was hard</h3>
+          <ul>
+            <li>Nothing to check against. Nobody had tagged these chats before, so in the first week I tagged close to 100 a day by hand to learn what “right” looked like.</li>
+            <li>Messy text. Students mixed languages and spelled words however they liked, and even agents wrote “irrelevant” several ways. Lead-scoring tools rely on forms and website tracking, and all we had was the chat.</li>
+            <li>Live use. Agents worked from the output during the day, so a bad rule could reach the call list within hours. Every fix also had to be re-run on past days without quietly changing last week’s numbers.</li>
+          </ul>
+        </section>
+
+        <section id="ld-tags">
+          <h3>What each chat gets</h3>
+          <p>Every chat gets a tag, a sub-label, a confidence level and a one-line reason.</p>
+          <table class="cs__table--text">
+            <thead><tr><th>Tag</th><th>Means</th></tr></thead>
+            <tbody>
+              <tr><td>Qualified</td><td>A real student in a real conversation, ranked high, medium or low intent, or can’t afford</td></tr>
+              <tr><td>No response</td><td>Sent the pre-typed message and nothing else</td></tr>
+              <tr><td>Irrelevant</td><td>Not a lead for this course</td></tr>
+              <tr><td>Future lead</td><td>A real student, but for a later exam year</td></tr>
+            </tbody>
+          </table>
+          <p>Sales used the tag to decide who to call, and marketing used the sub-label to see why leads were lost. Payment is a separate flag, so a chat can be high intent and paid at the same time.</p>
+          <figure>
+            <img src="assets/leads-pipeline.jpg" alt="Flow: chat, prepare and clean, rule ladder, set aside or rank by what they asked, tag with confidence and reason, manual corrections, one row per student, final lead list" loading="lazy" />
+            <figcaption>How a chat moves through the pipeline</figcaption>
+          </figure>
+        </section>
+
+        <section id="ld-rules">
+          <h3>Why rules, not AI</h3>
+          <p>I drafted an AI version with the same labels first, then went with rules because of how often it had to run and how quickly mistakes needed fixing.</p>
+          <ul>
+            <li>Free to run, so tagging several times a day added no API bill</li>
+            <li>Re-running every past day after a fix took seconds</li>
+            <li>The same chat always got the same tag, which daily reports depend on</li>
+            <li>A wrong tag pointed straight to the rule behind it</li>
+          </ul>
+          <p>The cost is upkeep. Students keep finding new ways to say the same thing, so the rules keep growing, and rules can’t read voice notes or catch sarcasm.</p>
+        </section>
+
+        <section id="ld-how">
+          <h3>How it works</h3>
+          <ol>
+            <li>Prepare the chat. Pull the full thread, mark who sent each message and remove the pre-typed opening. Each day’s tag uses only that day’s messages.</li>
+            <li>Apply the rules in order. Chats that aren’t leads are set aside first. The agent’s call comes first, and “not interested” only counts near the end of a chat.</li>
+            <li>Rank by buying intent. What a student asks matters more than how much they write, so “too expensive” followed by “how do I pay?” is high intent.</li>
+            <li>Correct and de-duplicate. Hand corrections override the rules, and each student keeps only their best tag per course.</li>
+          </ol>
+          <p>During the day it tagged new chats several times and pushed high-intent leads to the sheet agents already used. Once a day it re-tagged everything as the final record.</p>
+          <p>To improve the rules, I compared them with hand-tagged chats, logged each mismatch with the chat that caused it, fixed the rule and re-ran past days to see what else changed. I confirmed every proposed fix by hand before it went in.</p>
+          <figure>
+            <img src="assets/leads-rule-loop.jpg" alt="Loop: tag chats by hand, compare with the rules, find a disagreement, fix the rule and log it, re-run past days" loading="lazy" />
+            <figcaption>How the rules were checked and fixed</figcaption>
+          </figure>
+        </section>
+
+        <section id="ld-results">
+          <h3>Results</h3>
+          <p>Agents started each round with the students most likely to buy, instead of working through the inbox in the order chats arrived. Because the list refreshed during the day, those students were reached the same day they messaged.</p>
+          <ul>
+            <li>High-intent leads were 27% of qualified leads and brought 61% of their sales, converting 3 to nearly 9× better than the other tiers. Part of that comes from being called first, which was the point.</li>
+            <li>Fewer than 0.1% of chats set aside as irrelevant ever led to a sale, so agents could skip them safely.</li>
+            <li>“Can’t afford” leads stayed on the list and converted better than medium and low intent.</li>
+            <li>Conversion on the main course went from 1% to 4% in four months. Lead volume fell over the same period as the season ended, so not all of that is the tagging.</li>
+          </ul>
+          <figure>
+            <img src="assets/leads-vs-sales.jpg" alt="Bar chart: share of qualified leads vs share of sales by tier. High intent 27% vs 61%, medium 41% vs 27%, low 24% vs 6%, can't afford 8% vs 6%" loading="lazy" />
+            <figcaption>Share of qualified leads vs share of sales, by tier</figcaption>
+          </figure>
+        </section>
+
+        <section id="ld-next">
+          <h3>What I’d check next</h3>
+          <ul>
+            <li>Accuracy. The rules were checked against hand-tagged chats but never on a separate test set. Next is a labelled test set with precision and recall for each tag, compared side by side with an AI classifier.</li>
+            <li>Future leads. On the main course they converted at 8.1%, higher than qualified leads. Either next-year students signed up on schedule, or the “next year” rules were catching students who were ready now.</li>
+          </ul>
+          <p class="cs__note">Company details and example phrases are generalised. The labels, rules, workflow and results are from production.</p>
+          <a class="btn btn--grad cs__github" href="https://github.com/HanifaElahi/leads-tagging-framework" target="_blank" rel="noopener">Full write-up on GitHub ↗</a>
         </section>
       </div>
     </div>

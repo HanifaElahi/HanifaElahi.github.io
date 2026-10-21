@@ -182,7 +182,7 @@ ul, ol { margin: 0; padding: 0; }
 .section__sub { color: var(--muted); margin-top: 14px; font-size: 17px; }
 
 /* Case studies: compact cards in a grid */
-.cases { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.cases { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1000px; }
 .case {
   display: flex; flex-direction: column; border-radius: 16px; overflow: hidden;
   background: var(--surface); border: 1px solid var(--border);
@@ -362,7 +362,7 @@ body:has(.cs[open]) { overflow: hidden; }
 .cs__content h3 { font-size: 20px; margin-bottom: 14px; }
 .cs__content h4 { font-size: 14px; margin: 0 0 8px; color: var(--text); }
 .cs__content p, .cs__content li { color: var(--muted); font-size: 15.5px; }
-.cs__content p + p, .cs__content ul + p, .cs__content table + p, .cs__content .cs__split + p { margin-top: 12px; }
+.cs__content p + p, .cs__content ul + p, .cs__content ol + p, .cs__content table + p, .cs__content .cs__split + p { margin-top: 12px; }
 .cs__content ul { padding-left: 20px; margin-top: 10px; }
 .cs__content li + li { margin-top: 4px; }
 .cs__content li::marker { color: #60a5fa; }
@@ -374,6 +374,13 @@ body:has(.cs[open]) { overflow: hidden; }
 .cs__content th:first-child, .cs__content td:first-child { padding-left: 0; }
 .cs__content th { font-weight: 500; color: var(--faint); font-size: 12px; }
 .cs__content td { color: var(--text); }
+.cs__content ol { padding-left: 20px; margin-top: 10px; }
+.cs__content ol li::marker { color: #60a5fa; font: 500 13px var(--mono); }
+.cs__content .cs__table--text { font: 400 14.5px/1.5 var(--font); width: 100%; }
+.cs__content .cs__table--text th, .cs__content .cs__table--text td { text-align: left; white-space: normal; vertical-align: top; padding: 9px 0 9px 24px; }
+.cs__content .cs__table--text th:first-child, .cs__content .cs__table--text td:first-child { padding-left: 0; white-space: nowrap; }
+.cs__content .cs__table--text td { color: var(--muted); }
+.cs__content .cs__table--text td:first-child { color: var(--text); }
 .cs__split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .cs__split > div { padding: 16px 18px; border-radius: 12px; background: var(--surface); border: 1px solid var(--border); }
 .cs__split ul { margin-top: 0; }
