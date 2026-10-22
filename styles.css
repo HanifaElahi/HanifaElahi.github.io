@@ -416,6 +416,7 @@ body:has(.cs[open]) { overflow: hidden; }
 }
 @media (min-width: 761px) and (max-width: 980px) {
   .case, .post { min-height: 460px; }
+  .toolkit__cat:not(.toolkit__cat--wide) { min-height: 250px; }
 }
 
 /* ===== Responsive ===== */
