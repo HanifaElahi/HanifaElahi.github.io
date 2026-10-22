@@ -409,7 +409,7 @@ body:has(.cs[open]) { overflow: hidden; }
 
 /* Case study and article cards share one height so the two rows line up */
 @media (min-width: 981px) {
-  .case, .post { min-height: 410px; }
+  .case, .post { min-height: 430px; }
 }
 @media (min-width: 981px) and (max-width: 1150px) {
   .case, .post { min-height: 470px; }

@@ -223,7 +223,18 @@
             <div class="case__body">
               <h3>Lead Classification from Sales Chats</h3>
               <p>Sorting hundreds of sales chats a day by buying intent, so agents call the students most likely to buy first.</p>
-              <div class="case__tags"><span>Lead scoring</span><span>Rule-based classification</span><span>Production</span></div>
+              <div class="case__tags"><span>Rule-based classification</span><span>Lead qualification</span><span>Funnel analysis</span><span>Text analytics</span><span>Chat data</span></div>
+              <span class="case__link">Read case study →</span>
+            </div>
+          </a>
+          <a class="case" href="https://github.com/HanifaElahi/predicting-buyers-from-app-behaviour" target="_blank" rel="noopener" data-case-open="case-buyers">
+            <div class="case__media">
+              <img src="assets/case-buyers-card.svg" alt="Bar chart: serious use, reaching for paid content and getting to checkout are far more common among buyers; browsing and clicking to buy are not" loading="lazy" />
+            </div>
+            <div class="case__body">
+              <h3>Predicting Buyers from App Behaviour</h3>
+              <p>Working out which new installs are likely to pay from app activity alone, and turning that into a weekly call list.</p>
+              <div class="case__tags"><span>Behavioural analytics</span><span>Buyer segmentation</span><span>Lead scoring</span><span>Matched comparison</span><span>Event data</span></div>
               <span class="case__link">Read case study →</span>
             </div>
           </a>
@@ -234,7 +245,7 @@
             <div class="case__body">
               <h3>Cloud Cost Forecasting</h3>
               <p>Forecasting cloud costs as a business scales. The bill didn’t follow demand, so I modelled it in capacity steps instead.</p>
-              <div class="case__tags"><span>Forecasting</span><span>Cost modelling</span><span>Synthetic data</span></div>
+              <div class="case__tags"><span>Forecasting</span><span>Cost modelling</span><span>Driver analysis</span><span>Unit economics</span></div>
               <span class="case__link">Read case study →</span>
             </div>
           </a>
@@ -382,7 +393,7 @@
       <div>
         <h2 id="cs-cloud-title">Cloud Cost Forecasting</h2>
         <p>How cloud costs change as a business scales, and why the bill rose in steps rather than with demand.</p>
-        <div class="case__tags"><span>Forecasting</span><span>Cost modelling</span><span>Synthetic data</span></div>
+        <div class="case__tags"><span>Forecasting</span><span>Cost modelling</span><span>Driver analysis</span><span>Unit economics</span></div>
       </div>
       <button class="cs__close" type="button" aria-label="Close case study" data-case-close>✕</button>
     </header>
@@ -494,7 +505,7 @@
       <div>
         <h2 id="cs-lead-title">Lead Classification from Sales Chats</h2>
         <p>Sorting hundreds of sales chats a day by buying intent, so agents call the students most likely to buy first.</p>
-        <div class="case__tags"><span>Lead scoring</span><span>Rule-based classification</span><span>Production</span></div>
+        <div class="case__tags"><span>Rule-based classification</span><span>Lead qualification</span><span>Funnel analysis</span><span>Text analytics</span><span>Chat data</span></div>
       </div>
       <button class="cs__close" type="button" aria-label="Close case study" data-case-close>✕</button>
     </header>
@@ -610,6 +621,132 @@
           </ul>
           <p class="cs__note">Company details and example phrases are generalised. The labels, rules, workflow and results are from production.</p>
           <a class="btn btn--grad cs__github" href="https://github.com/HanifaElahi/leads-tagging-framework" target="_blank" rel="noopener">Full write-up on GitHub ↗</a>
+        </section>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog class="cs" id="case-buyers" aria-labelledby="cs-buyers-title">
+    <header class="cs__head">
+      <div>
+        <h2 id="cs-buyers-title">Predicting Buyers from App Behaviour</h2>
+        <p>What new installs do across the mobile and web app, what buyers do differently, and how that became a way to spot likely buyers early.</p>
+        <div class="case__tags"><span>Behavioural analytics</span><span>Buyer segmentation</span><span>Lead scoring</span><span>Matched comparison</span><span>Event data</span></div>
+      </div>
+      <button class="cs__close" type="button" aria-label="Close case study" data-case-close>✕</button>
+    </header>
+
+    <div class="cs__scroll">
+      <nav class="cs__nav" aria-label="Case study sections">
+        <a href="#by-summary">Summary</a>
+        <a href="#by-approach">How I approached it</a>
+        <a href="#by-data">Making the data readable</a>
+        <a href="#by-types">Four ways users buy</a>
+        <a href="#by-signals">Signals that matter</a>
+        <a href="#by-tiers">From signals to action</a>
+        <a href="#by-limits">Limitations</a>
+      </nav>
+
+      <div class="cs__content">
+        <section id="by-summary">
+          <h3>Summary</h3>
+          <p>New users install the app every day on mobile and web, and most of them never pay. The question was whether app activity alone could show which new installs are likely to pay, and which actions show it most reliably.</p>
+          <p>I compared users who paid with similar users who didn’t, found four distinct ways people buy, and kept only the behaviours that genuinely set buyers apart. Those became five tiers with a clear action each, applied to new installs every week.</p>
+          <ul>
+            <li>Three behaviours made a user roughly twice as likely to pay</li>
+            <li>Several actions that sound like intent turned out to be just as common among non-buyers</li>
+            <li>More than half of new installs each week could be left out of calls</li>
+          </ul>
+          <figure>
+            <img src="assets/buyers-scoring-pipeline.jpg" alt="Flow: new install, clean up events, build a profile, find buyer types, compare with non-buyers, find the signals, tier, score and reason, weekly call list" loading="lazy" />
+            <figcaption>How a new install moves through the scoring</figcaption>
+          </figure>
+        </section>
+
+        <section id="by-approach">
+          <h3>How I approached it</h3>
+          <p>Looking only at users who paid would show what buyers do, but not whether it sets them apart. So I worked with two groups:</p>
+          <ul>
+            <li>users who paid, with their full journey from install to payment</li>
+            <li>users who didn’t pay, who installed over the same months, chose the same exam and had at least a month to buy</li>
+          </ul>
+          <p>If both groups do something, it can’t tell you who will pay. There was also no data on how users found the app, so everything had to come from behaviour.</p>
+        </section>
+
+        <section id="by-data">
+          <h3>Making the data readable</h3>
+          <p>The same action was often logged differently on mobile and web. I matched and merged those events into one consistent set, tagged each by platform and separated real actions from navigation noise.</p>
+          <p>Then I sorted actions into three layers: engagement (using the product), buying steps (checking prices, hitting a paywall, starting checkout, asking for help) and navigation (moving around the app). Each user was then described the same way, with counts scaled so the heaviest users didn’t skew the comparison.</p>
+          <figure>
+            <img src="assets/buyers-data-cleanup.jpg" alt="Diagram: mobile and web events merged into one clean set of actions, split into engagement, buying steps and navigation" loading="lazy" />
+            <figcaption>From messy events to three layers</figcaption>
+          </figure>
+        </section>
+
+        <section id="by-types">
+          <h3>Four ways users buy</h3>
+          <p>Grouping paying users by how they behaved before buying gave four clear patterns, each taking a very different amount of time to pay.</p>
+          <table class="cs__table--text">
+            <thead><tr><th>Buyer type</th><th>What they do</th></tr></thead>
+            <tbody>
+              <tr><td>Came to buy</td><td>About 4 in 10 buyers. Barely use the app and pay within hours, often in the first session.</td></tr>
+              <tr><td>Wants a conversation</td><td>About a quarter. Try a little, ask for help, then pay within days.</td></tr>
+              <tr><td>Convinced by the product</td><td>About a quarter. Use the product properly for a few months before deciding.</td></tr>
+              <tr><td>Power explorer</td><td>About 1 in 10. Use everything heavily for over a year before paying.</td></tr>
+            </tbody>
+          </table>
+          <p>These are snapshots, not fixed labels. A user can move between types, and a new install’s type only settles after the first few days.</p>
+          <figure>
+            <img src="assets/buyers-buyer-types.jpg" alt="Bubble chart: four buyer types placed by time to pay and how much they use the app, sized by share of buyers" loading="lazy" />
+            <figcaption>Four ways users buy</figcaption>
+          </figure>
+        </section>
+
+        <section id="by-signals">
+          <h3>Signals that matter</h3>
+          <p>For every behaviour, I compared how often buyers did it with how often non-buyers did. That changed the answer. Asking for help looked strong when I only looked at buyers, but plenty of non-buyers did it too.</p>
+          <p>Three behaviours held up, each making a user roughly twice as likely to pay:</p>
+          <ul>
+            <li>serious use, going deep into the product rather than just trying it</li>
+            <li>reaching for paid content</li>
+            <li>getting to checkout, then stopping before finishing</li>
+          </ul>
+          <p>Clicking to buy, joining free events and general browsing were as common among non-buyers. Even the strong signals aren’t guarantees: most users who show one still don’t pay. Activity shows interest; commitment shows a likely buyer.</p>
+          <figure>
+            <img src="assets/buyers-signals.jpg" alt="Bar chart: serious use, reaching for paid content and getting to checkout are far more common among buyers; clicking to buy and joining free events are more common among non-buyers" loading="lazy" />
+            <figcaption>Which behaviours set buyers apart</figcaption>
+          </figure>
+        </section>
+
+        <section id="by-tiers">
+          <h3>From signals to action</h3>
+          <p>The signals and buyer types became five tiers, each with a clear action.</p>
+          <table class="cs__table--text">
+            <thead><tr><th>Tier</th><th>Action</th></tr></thead>
+            <tbody>
+              <tr><td>HOT</td><td>Shows a commitment signal or looks like a power explorer. Call within a day or two.</td></tr>
+              <tr><td>LOW-SIGNAL</td><td>Did almost nothing, like the came-to-buy group. Find out how they came in, then call quickly.</td></tr>
+              <tr><td>WARM</td><td>Some interest in paying, no strong signal. Soft follow-up.</td></tr>
+              <tr><td>COLD</td><td>Low activity that doesn’t match came-to-buy. Check how they came in first.</td></tr>
+              <tr><td>COOL</td><td>Browsing only. No calls, marketing only.</td></tr>
+            </tbody>
+          </table>
+          <p>Within each tier, a priority score sets the order, and every user gets a plain reason line so the person calling knows why. Each week a small share came out HOT and more than half came out COOL. As exam season got closer, more HOT users showed up through serious preparation rather than checkout.</p>
+          <figure>
+            <img src="assets/buyers-tiers-funnel.jpg" alt="Funnel: HOT, LOW-SIGNAL, WARM, COLD and COOL tiers, from smallest share called first to largest share not called" loading="lazy" />
+            <figcaption>Five tiers, each with a clear action</figcaption>
+          </figure>
+        </section>
+
+        <section id="by-limits">
+          <h3>Limitations</h3>
+          <ul>
+            <li>The two groups weren’t measured over the same window. Buyers’ activity stops when they pay, which can make some behaviours look weaker than they are.</li>
+            <li>The biggest buyer type is invisible. Users who came to buy barely use the app, so spotting them needs data on how they found it.</li>
+            <li>There was no record of follow-up outcomes, and it ran off-season, so it’s too early to judge live results.</li>
+          </ul>
+          <p class="cs__note">Company details, product features and figures are generalised. The approach and findings are from the actual analysis.</p>
+          <a class="btn btn--grad cs__github" href="https://github.com/HanifaElahi/predicting-buyers-from-app-behaviour" target="_blank" rel="noopener">Full write-up on GitHub ↗</a>
         </section>
       </div>
     </div>
