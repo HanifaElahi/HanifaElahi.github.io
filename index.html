@@ -233,7 +233,7 @@
             </div>
             <div class="case__body">
               <h3>Predicting Buyers from App Behaviour</h3>
-              <p>Working out which new installs are likely to pay from app activity alone, and turning that into a weekly call list.</p>
+              <p>Working out which new users are likely to pay from app activity alone, and turning that into a weekly call list.</p>
               <div class="case__tags"><span>Behavioural analytics</span><span>Buyer segmentation</span><span>Lead scoring</span><span>Matched comparison</span><span>Event data</span></div>
               <span class="case__link">Read case study →</span>
             </div>
@@ -630,7 +630,7 @@
     <header class="cs__head">
       <div>
         <h2 id="cs-buyers-title">Predicting Buyers from App Behaviour</h2>
-        <p>What new installs do across the mobile and web app, what buyers do differently, and how that became a way to spot likely buyers early.</p>
+        <p>What new users do across the mobile and web app, what buyers do differently, and how that became a way to spot likely buyers early.</p>
         <div class="case__tags"><span>Behavioural analytics</span><span>Buyer segmentation</span><span>Lead scoring</span><span>Matched comparison</span><span>Event data</span></div>
       </div>
       <button class="cs__close" type="button" aria-label="Close case study" data-case-close>✕</button>
@@ -644,22 +644,23 @@
         <a href="#by-types">Four ways users buy</a>
         <a href="#by-signals">Signals that matter</a>
         <a href="#by-tiers">From signals to action</a>
-        <a href="#by-limits">Limitations</a>
+        <a href="#by-limits">What I’d check next</a>
       </nav>
 
       <div class="cs__content">
         <section id="by-summary">
           <h3>Summary</h3>
-          <p>New users install the app every day on mobile and web, and most of them never pay. The question was whether app activity alone could show which new installs are likely to pay, and which actions show it most reliably.</p>
-          <p>I compared users who paid with similar users who didn’t, found four distinct ways people buy, and kept only the behaviours that genuinely set buyers apart. Those became five tiers with a clear action each, applied to new installs every week.</p>
+          <p>New users arrive every day, installing the mobile app or signing up on the web, and most of them never pay. The question was whether app activity alone could show which new users are likely to pay, and which actions show it most reliably.</p>
+          <p>I compared users who paid with similar users who didn’t, found four distinct ways people buy, and kept only the behaviours that genuinely set buyers apart. Those became five tiers with a clear action each, applied to new users every week.</p>
           <ul>
             <li>Three behaviours made a user roughly twice as likely to pay</li>
             <li>Several actions that sound like intent turned out to be just as common among non-buyers</li>
-            <li>More than half of new installs each week could be left out of calls</li>
+            <li>More than half of new users each week could be left out of calls</li>
           </ul>
+          <p class="cs__note">Built with SQL, Python, Claude Code and Google Sheets.</p>
           <figure>
-            <img src="assets/buyers-scoring-pipeline.jpg" alt="Flow: new install, clean up events, build a profile, find buyer types, compare with non-buyers, find the signals, tier, score and reason, weekly call list" loading="lazy" />
-            <figcaption>How a new install moves through the scoring</figcaption>
+            <img src="assets/buyers-scoring-pipeline.jpg" alt="Flow: new user, clean up events, build a profile, find buyer types, compare with non-buyers, find the signals, tier, score and reason, weekly call list" loading="lazy" />
+            <figcaption>How a new user moves through the scoring</figcaption>
           </figure>
         </section>
 
@@ -667,8 +668,8 @@
           <h3>How I approached it</h3>
           <p>Looking only at users who paid would show what buyers do, but not whether it sets them apart. So I worked with two groups:</p>
           <ul>
-            <li>users who paid, with their full journey from install to payment</li>
-            <li>users who didn’t pay, who installed over the same months, chose the same exam and had at least a month to buy</li>
+            <li>users who paid, with their full journey from joining to payment</li>
+            <li>users who didn’t pay, who joined over the same months, chose the same exam and had at least a month to buy</li>
           </ul>
           <p>If both groups do something, it can’t tell you who will pay. There was also no data on how users found the app, so everything had to come from behaviour.</p>
         </section>
@@ -695,7 +696,8 @@
               <tr><td>Power explorer</td><td>About 1 in 10. Use everything heavily for over a year before paying.</td></tr>
             </tbody>
           </table>
-          <p>These are snapshots, not fixed labels. A user can move between types, and a new install’s type only settles after the first few days.</p>
+          <p>These are snapshots, not fixed labels. A user can move between types, and a new user’s type only settles after the first few days.</p>
+          <p>People also buy in two waves. About half of buyers paid within a week of joining, and about 3 in 10 came back six months or more later as the exam got close, with very little in between. So the first days after joining matter most, and users who go quiet aren’t necessarily lost.</p>
           <figure>
             <img src="assets/buyers-buyer-types.jpg" alt="Bubble chart: four buyer types placed by time to pay and how much they use the app, sized by share of buyers" loading="lazy" />
             <figcaption>Four ways users buy</figcaption>
@@ -731,7 +733,7 @@
               <tr><td>COOL</td><td>Browsing only. No calls, marketing only.</td></tr>
             </tbody>
           </table>
-          <p>Within each tier, a priority score sets the order, and every user gets a plain reason line so the person calling knows why. Each week a small share came out HOT and more than half came out COOL. As exam season got closer, more HOT users showed up through serious preparation rather than checkout.</p>
+          <p>Within each tier, a priority score sets the order, and every user gets a plain reason line so the person calling knows why. Each week a small share came out HOT and more than half came out COOL. Every HOT user also went into one running list, so the busy season starts with a ready pool of likely buyers.</p>
           <figure>
             <img src="assets/buyers-tiers-funnel.jpg" alt="Funnel: HOT, LOW-SIGNAL, WARM, COLD and COOL tiers, from smallest share called first to largest share not called" loading="lazy" />
             <figcaption>Five tiers, each with a clear action</figcaption>
@@ -739,11 +741,12 @@
         </section>
 
         <section id="by-limits">
-          <h3>Limitations</h3>
+          <h3>What I’d check next</h3>
           <ul>
-            <li>The two groups weren’t measured over the same window. Buyers’ activity stops when they pay, which can make some behaviours look weaker than they are.</li>
-            <li>The biggest buyer type is invisible. Users who came to buy barely use the app, so spotting them needs data on how they found it.</li>
-            <li>There was no record of follow-up outcomes, and it ran off-season, so it’s too early to judge live results.</li>
+            <li>A fairer comparison. Buyers’ activity stops when they pay, while non-buyers had at least a month. Comparing both over the same first days after joining would make the signals more reliable.</li>
+            <li>Where the quick buyers come from. About 4 in 10 buyers can’t be spotted from behaviour because they barely use the app. Data on how users found the app would close that gap.</li>
+            <li>Follow-up outcomes. Recording whether flagged users were reached, and what happened, would show which tiers really convert.</li>
+            <li>A proper test. Splitting new users between this scoring and the usual approach for a few weeks would show how much it actually helps.</li>
           </ul>
           <p class="cs__note">Company details, product features and figures are generalised. The approach and findings are from the actual analysis.</p>
           <a class="btn btn--grad cs__github" href="https://github.com/HanifaElahi/predicting-buyers-from-app-behaviour" target="_blank" rel="noopener">Full write-up on GitHub ↗</a>
